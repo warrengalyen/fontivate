@@ -1,8 +1,9 @@
-package installer
+package install
 
 import (
 	"fmt"
 	"path/filepath"
+	"runtime"
 	"strings"
 )
 
@@ -28,13 +29,13 @@ func run(fontPath string, activate bool, temp bool) (err error) {
 	}
 
 	if temp {
-		if activate {
-			err = WinTempInstall(font)
+		if activate && runtime.GOOS == "windows" {
+			err = winTempInstall(font)
 			if err == nil {
 				return err
 			}
 		} else {
-			err = WinTempUninstall(font)
+			err = winTempUninstall(font)
 			if err == nil {
 				return err
 			}

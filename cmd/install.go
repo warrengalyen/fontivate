@@ -4,7 +4,7 @@ import (
 	"fmt"
 
 	"github.com/spf13/cobra"
-	"github.com/warrengalyen/fontivate/installer"
+	"github.com/warrengalyen/fontivate/install"
 	"github.com/warrengalyen/fontivate/utils"
 )
 
@@ -13,7 +13,7 @@ var installFontsCmd = &cobra.Command{
 	Short: "Installs selected fonts.",
 	Run: func(cmd *cobra.Command, args []string) {
 		fonts := utils.AppendExists(args)
-		if err := installer.Init(fonts, true, temporary); err != nil {
+		if err := install.Init(fonts, true, temporary); err != nil {
 			fmt.Println("Font installation errors:", err)
 		}
 	},
@@ -25,7 +25,7 @@ var uninstallFontsCmd = &cobra.Command{
 	Short: "Uninstalls selected fonts.",
 	Run: func(cmd *cobra.Command, args []string) {
 		fonts := utils.AppendExists(args)
-		if err := installer.Init(fonts, false, temporary); err != nil {
+		if err := install.Init(fonts, false, temporary); err != nil {
 			fmt.Println("Font installation errors:", err)
 		}
 	},

@@ -1,4 +1,4 @@
-package installer
+package install
 
 import (
 	"fmt"
@@ -115,7 +115,7 @@ func uninstall(font *FontData) (err error) {
 	return nil
 }
 
-func WinTempInstall(font *FontData) (err error) {
+func winTempInstall(font *FontData) (err error) {
 	if err = addFontResource(font.FilePath); err != nil {
 		return fmt.Errorf("Error adding font resource: %w", err)
 	}
@@ -125,7 +125,7 @@ func WinTempInstall(font *FontData) (err error) {
 	return nil
 }
 
-func WinTempUninstall(font *FontData) (err error) {
+func winTempUninstall(font *FontData) (err error) {
 	if err = removeFontResource(font.FilePath); err != nil {
 		return fmt.Errorf("Error adding font resource: %w", err)
 	}

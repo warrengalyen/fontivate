@@ -4,8 +4,9 @@
 [![GoDoc](https://godoc.org/github.com/warrengalyen/fontivate?status.svg)](https://godoc.org/github.com/warrengalyen/fontivate)
 ![Supported Version](https://img.shields.io/badge/go%20version-%3E%3D1.20-turquoise)
 [![License](https://img.shields.io/github/license/warrengalyen/fontivate)](https://github.com/warrengalyen/fontivate/blob/master/LICENSE)
+![Go version](https://img.shields.io/github/go-mod/go-version/warrengalyen/fontivate)
 
-`fontivate` is a command line font management tool to be used with my upcoming desktop Electron-based Font Manager.
+Fontivate is a command line font management tool to be used with my upcoming desktop Electron-based Font Manager.
 
 ## Installation
 
@@ -21,45 +22,49 @@ Run `fontivate -h` to print help instructions.
 
 ---
 
-### Installing Fonts
+## Font Installation
+
+> The following commands must be used with elevated or administrative privileges.
+
+### Adding Fonts
 
 ```sh
-fontivate install "Font-Name.otf"
+fontivate install "<path-source-folder>/Font-Name.otf"
 ```
 
-### Uninstalling Fonts
+### Removing Fonts
 
 ```sh
-fontivate uninstall "Font-Name.otf"
+fontivate uninstall "<path-system-folder>/Font-Name.otf"
 ```
 
-### Multiple Fonts
+### Temporary Font Installation
 
-Installing multiple fonts is supported by separating paths by a space.
-
-```sh
-fontivate install "Font-Name.otf" "Font-Name Bold.otf" "Font-Name Bold Italic.otf"
-```
-
-### Temporary Installation
-
-Windows supports installing fonts temporarily. Fonts are removed after a system reboot.
+Windows supports installing fonts temporarily. Fonts are automatically removed after a system reboot.
 
 ```sh
 fontivate install --temporary=true "Font-Name.otf"
 ```
 
-### Temp Uninstallation
+### Temporary Font Uninstallation
 
 ```sh
 fontivate uninstall --temporary=true "Font-Name.otf"
 ```
 
+### Multiple Fonts
+
+Working with arrays of fonts is supported by separating each font path by a space.
+
+```sh
+fontivate install "Font-Name.otf" "Font-Name Bold.otf" "Font-Name Bold Italic.otf"
+```
+
 ---
 
-## Font Management
+## Miscellaneous Commands
 
-Included utility commands to help manage system fonts.
+Utility commands to help manage system fonts.
 
 ### Finding Fonts
 
@@ -71,7 +76,7 @@ fontivate fonts find --root "C:\Fonts"
 
 ### Copying Fonts
 
-Copies fonts from source to destination folder.
+Copies fonts from `source` to `destination` folder.
 
 ```sh
 fontivate fonts copy --source "C:\Fonts" --destination "C:\Dest"
